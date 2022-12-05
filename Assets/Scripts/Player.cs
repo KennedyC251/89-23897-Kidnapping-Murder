@@ -34,4 +34,19 @@ public class Player : MonoBehaviour
 
         CC.Move(movement);
     }
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Collectscript cs = hit.gameObject.GetComponent<Collectscript>();
+        if (cs)
+        {
+            Destroy(hit.gameObject);
+
+        }
+        Removescript rs = hit.gameObject.GetComponent<Removescript>();
+        if (rs)
+        {
+            Destroy(hit.gameObject);
+
+        }
+    }
 }
