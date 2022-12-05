@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     public GameObject BlueUI;
 
     //collision
-    public bool GotBlue = false;
+    public bool GotKey1 = false;
 
     private void Start()
     {
@@ -49,17 +49,17 @@ public class Player : MonoBehaviour
     }
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        Collectscript cs = hit.gameObject.GetComponent<Collectscript>();
-        if (cs)
+        Key1script k1 = hit.gameObject.GetComponent<Key1script>();
+        if (k1)
         {
             Destroy(hit.gameObject);
             BlueUI.SetActive(true);
 
-            GotBlue = true;
+            GotKey1 = true;
 
         }
         Removescript rs = hit.gameObject.GetComponent<Removescript>();
-        if (rs && GotBlue)
+        if (rs && GotKey1)
         {
             Destroy(hit.gameObject);
 
