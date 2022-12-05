@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     public float verticalSpeed;
 
     //UI
-    public GameObject BlueUI;
+    public GameObject Key1UI;
 
     //collision
     public bool GotKey1 = false;
@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         //setactive
-        BlueUI.SetActive(false);
+        Key1UI.SetActive(false);
     }
 
     void Update()
@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
         if (k1)
         {
             Destroy(hit.gameObject);
-            BlueUI.SetActive(true);
+            Key1UI.SetActive(true);
 
             GotKey1 = true;
 
@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
         {
             Destroy(hit.gameObject);
 
-            BlueUI.SetActive(false);
+            Key1UI.SetActive(false);
 
         }
     }
