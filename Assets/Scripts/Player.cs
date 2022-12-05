@@ -1,16 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    //movement
     public CharacterController CC;
     public float moveSpeed;
     public float gravity = -9.8f;
     public float jump;
     public float verticalSpeed;
 
-    // Update is called once per frame
+    //UI
+    public GameObject BlueUI;
+
+    //collision
+    public bool GotBlue = false;
+
+    private void Start()
+    {
+        //setactive
+        BlueUI.SetActive(false);
+    }
+
     void Update()
     {
         Vector3 movement = Vector3.zero;
@@ -40,12 +53,17 @@ public class Player : MonoBehaviour
         if (cs)
         {
             Destroy(hit.gameObject);
+            BlueUI.SetActive(true);
+
+            GotBlue = true;
 
         }
         Removescript rs = hit.gameObject.GetComponent<Removescript>();
-        if (rs)
+        if (rs && GotBlue)
         {
             Destroy(hit.gameObject);
+
+            BlueUI.SetActive(false);
 
         }
     }
