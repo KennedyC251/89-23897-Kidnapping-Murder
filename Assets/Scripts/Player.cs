@@ -14,14 +14,17 @@ public class Player : MonoBehaviour
 
     //UI
     public GameObject Key1UI;
+    public GameObject Key2UI;
 
     //collision
     public bool GotKey1 = false;
+    public bool GotKey2 = false;
 
     private void Start()
     {
         //setactive
         Key1UI.SetActive(false);
+        Key2UI.SetActive(false);
     }
 
     void Update()
@@ -56,14 +59,32 @@ public class Player : MonoBehaviour
             Key1UI.SetActive(true);
 
             GotKey1 = true;
+        }
+
+        Key2script k2 = hit.gameObject.GetComponent<Key2script>();
+        if (k2)
+        {
+            Destroy(hit.gameObject);
+            Key2UI.SetActive(true);
+
+            GotKey2 = true;
 
         }
-        Removescript rs = hit.gameObject.GetComponent<Removescript>();
-        if (rs && GotKey1)
+
+        Door1script d1s = hit.gameObject.GetComponent<Door1script>();
+        if (d1s && GotKey1)
         {
             Destroy(hit.gameObject);
 
             Key1UI.SetActive(false);
+        }
+
+        Door2script d2s = hit.gameObject.GetComponent<Door2script>();
+        if (d2s && GotKey2)
+        {
+            Destroy(hit.gameObject);
+
+            Key2UI.SetActive(false);
 
         }
     }
