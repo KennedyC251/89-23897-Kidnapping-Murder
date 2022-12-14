@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     //UI
     public GameObject Key1UI;
     public GameObject Key2UI;
+    public GameObject Winscreen;
 
     //collision
     public bool GotKey1 = false;
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour
         //setactive
         Key1UI.SetActive(false);
         Key2UI.SetActive(false);
+        Winscreen.SetActive(false);
     }
 
     void Update()
@@ -86,6 +88,12 @@ public class Player : MonoBehaviour
 
             Key2UI.SetActive(false);
 
+        }
+
+        Gunscript gs = hit.gameObject.GetComponent<Gunscript>();
+        if (gs)
+        {
+            Winscreen.SetActive(true);
         }
     }
 }
